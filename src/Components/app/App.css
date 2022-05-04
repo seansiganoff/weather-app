@@ -1,0 +1,36 @@
+
+.appMainDiv {
+  background-image: url('C:\Users\seans\OneDrive\Documents\projects\weather-app\public\rainy.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  height: 100vh;
+  width: auto;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+p {
+  text-align: center;
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+}
+
+.input {
+  height: 50px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.675);
+  color: rgb(0, 0, 0);
+  font-size: large;
+  border: 0;
+  padding: 5px;
+}
+
+.inputDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
