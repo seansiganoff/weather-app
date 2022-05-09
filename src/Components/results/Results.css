@@ -1,16 +1,14 @@
 .resultsDiv {
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
-    
-}
-
-.results {
     font-size: 50px;
     color: whitesmoke;
-    margin: 0;
+    margin: 15% 4%;
     font-weight: 100;
     background: rgba(0, 0, 0, 0.523);
     padding: 40px;
-    border-radius: 15px;
-  }
+    
+    
+}
+
