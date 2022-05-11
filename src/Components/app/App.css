@@ -1,6 +1,6 @@
 
 .appContainer {
-  background-image: url('C:\Users\seans\OneDrive\Documents\projects\weather-app\public\clear.jpg');
+  background-image: url('./clear.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
