@@ -1,4 +1,3 @@
-
 import './App.css';
 import Results from '../results/Results';
 import React, { useState } from 'react';
@@ -38,6 +37,7 @@ function App() {
             value={city}
             onKeyPress={getWeather}
             placeholder="Enter city"
+            type='text'
           />
         </div>
         
