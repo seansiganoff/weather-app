@@ -10,16 +10,15 @@ function App() {
   const [city, setCity] = useState("");
 
   const getWeather = (event) => {
-    if(event.key === 'Enter') {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`).then(
-        response => response.json()
-      ).then(
-        data => {
-          setWeatherData(data)
-          setCity('')
-        }
-      )
-    }
+    event.preventDefault();
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`).then(
+      response => response.json()
+    ).then(
+      data => {
+        setWeatherData(data)
+        setCity('')
+      }
+    )
   }
 
   
@@ -27,35 +26,38 @@ function App() {
   
   return (
     <div className='appContainer'>
-      <h1 className='heading'>Weather App</h1>
-      
-      <div className='container'>
-        <div className='inputDiv'>
-          <input
-            className='input'
-            onChange={e => setCity(e.target.value)}
-            value={city}
-            onKeyPress={getWeather}
-            placeholder="Enter city"
-            type='text'
-          />
-        </div>
-        
-  
-        {typeof weatherData.main === 'undefined' ? (
-          <div className='welcome'>
+      <div className='overlay-container'>
+        <h1 className='heading'>Weather App</h1>
+          <div className='input-container'>
+            <form onSubmit={getWeather}>
+              <input
+                className='input'
+                onChange={e => setCity(e.target.value)}
+                value={city}
+                placeholder="Enter city"
+                type='text'
+              />
+              <button className='submit' type='submit'>Search</button>
+            </form>
+          </div>
+          <div className='clock'>
             <Clock />
           </div>
-        ) : (
-          <Results 
-            name={weatherData.name}
-            temp={Math.round(weatherData.main.temp)}
-            condition={weatherData.weather[0].main}
-          />
-          
-        ) }
+
+          <div className='result-container'>
+
+            {typeof weatherData.main === 'undefined' ? (
+              <></>
+            ) : (
+              <Results 
+                name={weatherData.name}
+                temp={Math.round(weatherData.main.temp)}
+                condition={weatherData.weather[0].main}
+              />
+              
+            ) }
+          </div>
       </div>
-      
     </div>
   );
     
