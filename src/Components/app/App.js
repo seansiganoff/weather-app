@@ -5,7 +5,7 @@ import Clock from '../clock/Clock.js';
 
 
 function App() {
-  const apiKey = "0cf6ac12d26fc1118dcfe4be214791ed";
+  const apiKey = "789874062e2e83109ec94ec4599df76a";
   const [weatherData, setWeatherData] = useState([{}])
   const [city, setCity] = useState("");
 
