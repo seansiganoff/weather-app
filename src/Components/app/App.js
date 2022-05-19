@@ -25,9 +25,10 @@ function App() {
   
   
   return (
-    <div className='appContainer'>
-      <div className='overlay-container'>
-        <h1 className='heading'>Weather App</h1>
+    <section>
+      <div className='appContainer'>
+        <div className='overlay-container'>
+          <h1 className='heading'>Weather App</h1>
           <div className='input-container'>
             <form onSubmit={getWeather}>
               <input
@@ -43,9 +44,7 @@ function App() {
           <div className='clock'>
             <Clock />
           </div>
-
           <div className='result-container'>
-
             {typeof weatherData.main === 'undefined' ? (
               <></>
             ) : (
@@ -57,8 +56,9 @@ function App() {
               
             ) }
           </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
     
 }
