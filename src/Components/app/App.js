@@ -5,42 +5,63 @@ import Clock from '../clock/Clock.js';
 
 
 function App() {
-  const apiKey = "789874062e2e83109ec94ec4599df76a";
+  const apiKey = process.env.REACT_APP_API_KEY;
   const [weatherData, setWeatherData] = useState([{}])
   const [city, setCity] = useState("");
 
   const getWeather = (event) => {
     event.preventDefault();
+
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`).then(
-      response => response.json()
+      response => {
+        if(response.status === 200) {
+          return response.json();
+        } else {
+          alert("States Are Not Allowed As Input! Or, Please Make Sure You Are Spelling The City Correct!")
+          window.location.reload();
+        }
+      }
     ).then(
       data => {
         setWeatherData(data)
         setCity('')
       }
     )
+
+    
   }
 
+    const main = require("../../images/main-background.jpg")
+    const cloudy = require("../../images/cloudyday.jpg")
+    const rain = require("../../images/rainyday.jpeg");
+    const snow = require("../../images/snowday.jpg");
+    const clear = require("../../images/clearsky.jpg")
+    const mist = require("../../images/mistyday.webp");
+    const condition = weatherData.main !== undefined ? weatherData.weather[0].description : "clear";
+    let getBackground = condition.includes("rain") ? rain : condition.includes("show") ? snow : condition.includes("mist") ? mist : condition.includes("haze") ? mist : condition.includes("cloud") ? cloudy : condition.includes("clear") ? clear : main;
+   
+    console.log(weatherData.main)
+    
   
-  
-  
+
   return (
     <section>
       <div className='appContainer'>
+        <img src={getBackground} alt='background' style={{width: "100%", minHeight: "100vh", maxHeight: '100vh'}}/>
+       
         <div className='overlay-container'>
           <h1 className='heading'>Weather App</h1>
-          <div className='input-container'>
-            <form onSubmit={getWeather}>
-              <input
-                className='input'
-                onChange={e => setCity(e.target.value)}
-                value={city}
-                placeholder="Enter city"
-                type='text'
-              />
-              <button className='submit' type='submit'>Search</button>
-            </form>
-          </div>
+          <form onSubmit={getWeather}>
+            <input
+              className='input'
+              onChange={e => setCity(e.target.value)}
+              value={city}
+              placeholder="Enter city"
+              type='text'
+            />
+            <button className='submit' type='submit'>Search</button>
+          </form>
           <div className='clock'>
             <Clock />
           </div>
@@ -52,6 +73,7 @@ function App() {
                 name={weatherData.name}
                 temp={Math.round(weatherData.main.temp)}
                 condition={weatherData.weather[0].main}
+                wind={weatherData.wind.speed}
               />
               
             ) }
