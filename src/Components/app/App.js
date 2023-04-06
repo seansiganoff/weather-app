@@ -38,12 +38,9 @@ function App() {
     const snow = require("../../images/snowday.jpg");
     const clear = require("../../images/clearsky.jpg")
     const mist = require("../../images/mistyday.webp");
-    const condition = weatherData.main !== undefined ? weatherData.weather[0].description : "clear";
-    let getBackground = condition.includes("rain") ? rain : condition.includes("show") ? snow : condition.includes("mist") ? mist : condition.includes("haze") ? mist : condition.includes("cloud") ? cloudy : condition.includes("clear") ? clear : main;
+    const condition = weatherData.main !== undefined ? weatherData.weather[0].description : "main";
+    let getBackground = condition.includes("rain") ? rain : condition.includes("show") ? snow : condition.includes("mist") ? mist : condition.includes("haze") ? mist : condition.includes("cloud") ? cloudy : condition.includes("clear") ? clear : condition.includes("drizzle")  ? rain : main;
    
-    console.log(weatherData.main)
-    
-  
 
   return (
     <section>
