@@ -9,10 +9,12 @@ function App() {
   const [weatherData, setWeatherData] = useState([{}])
   const [city, setCity] = useState("");
 
+
+
+
+  //gets weather data 
   const getWeather = (event) => {
     event.preventDefault();
-
-
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`).then(
       response => {
         if(response.status === 200) {
@@ -32,6 +34,7 @@ function App() {
     
   }
 
+    //Gets background based on the weather conditions.
     const main = require("../../images/main-background.jpg")
     const cloudy = require("../../images/cloudyday.jpg")
     const rain = require("../../images/rainyday.jpeg");
