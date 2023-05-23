@@ -20,7 +20,7 @@ function App() {
         if(response.status === 200) {
           return response.json();
         } else {
-          alert("States Are Not Allowed As Input! Or, Please Make Sure You Are Spelling The City Correct!")
+          alert("States Are Not Allowed As 2 digit Input! You must completely spell the state Or, Please Make Sure You Are Spelling The City Correct!")
           window.location.reload();
         }
       }
@@ -35,20 +35,21 @@ function App() {
   }
 
     //Gets background based on the weather conditions.
-    const main = require("../../images/main-background.jpg")
-    const cloudy = require("../../images/cloudyday.jpg")
+    const main = require("../../images/main-background.jpg");
+    const thunderstorm = require("../../images/thunderstorm.jpg");
+    const cloudy = require("../../images/cloudyday.jpg");
     const rain = require("../../images/rainyday.jpeg");
     const snow = require("../../images/snowday.jpg");
     const clear = require("../../images/clearsky.jpg")
     const mist = require("../../images/mistyday.webp");
     const condition = weatherData.main !== undefined ? weatherData.weather[0].description : "main";
-    let getBackground = condition.includes("rain") ? rain : condition.includes("show") ? snow : condition.includes("mist") ? mist : condition.includes("haze") ? mist : condition.includes("cloud") ? cloudy : condition.includes("clear") ? clear : condition.includes("drizzle")  ? rain : main;
+    let getBackground = condition.includes("rain") ? rain : condition.includes("thunderstorm") ? thunderstorm :  condition.includes("snow") ? snow : condition.includes("mist") ? mist : condition.includes("haze") ? mist : condition.includes("cloud") ? cloudy : condition.includes("clear") ? clear : condition.includes("drizzle")  ? rain : main;
    
 
   return (
     <section>
       <div className='appContainer'>
-        <img src={getBackground} alt='background' style={{width: "100%", minHeight: "100vh", maxHeight: '100vh'}}/>
+        <img src={getBackground} alt='background' />
        
         <div className='overlay-container'>
           <h1 className='heading'>Weather App</h1>

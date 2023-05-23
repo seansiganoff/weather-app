@@ -15,6 +15,13 @@
   position: relative;
 }
 
+.appContainer img {
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
 .overlay-container {
   background-color: rgba(0, 0, 0, 0.591);
   width: 60%;
@@ -50,7 +57,7 @@ form {
 
 .input {
   height: 50px;
-  width: 45vw;
+  width: 70%;
   background-color: rgba(255, 255, 255, 0.675);
   color: rgb(0, 0, 0);
   font-size: 1.5vw;
@@ -86,7 +93,7 @@ form {
   height: 50px;
   padding: 5px;
   margin: 5px;
-  font-size: 1.5vw;
+  font-size: small;
 }
 
 
@@ -96,7 +103,17 @@ form {
 
 
 
+@media only screen and (max-width: 1000px) {
+  .overlay-container {
+    width: 90%;
+  }
+}
 
+@media only screen and (max-width: 400px) {
+  .overlay-container {
+    width: 100%;
+  }
+}
 
 
 @media only screen and (max-width: 600px)  {
